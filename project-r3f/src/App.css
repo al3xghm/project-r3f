@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0b0b0c;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Helvetica Neue", sans-serif;
+  overflow: hidden;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 18px;
+  text-align: center;
+  background: rgba(28,28,30,0.65);
+  backdrop-filter: blur(35px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.app-header p {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.canvas-container {
+  flex: 1;
+}
+
+.controls-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(28,28,30,0.65);
+  backdrop-filter: blur(35px);
+  padding: 20px;
+  border-radius: 18px;
+  width: 280px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.controls-panel h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.control-group {
+  margin-bottom: 14px;
+}
+
+.control-group label {
+  font-size: 0.75rem;
+  opacity: 0.65;
+}
+
+.rain-toggle-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1c1c1e;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rain-toggle-btn:hover {
+  background: #2c2c2e;
+}
+
+.rain-toggle-btn.active {
+  background: #0a84ff;
+}
+
+.slider {
+  width: 100%;
+  height: 4px;
+  background: #2c2c2e;
+  border-radius: 5px;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #0a84ff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
