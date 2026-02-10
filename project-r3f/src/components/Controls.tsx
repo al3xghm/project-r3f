@@ -1,3 +1,4 @@
+// Interface pour les props du composant de contrôles
 interface ControlsProps {
   rainEnabled: boolean
   setRainEnabled: (enabled: boolean) => void
@@ -7,6 +8,7 @@ interface ControlsProps {
   setLightIntensity: (intensity: number) => void
 }
 
+// Composant de panneau de contrôle : contient les boutons et sliders pour contrôler la scène
 function Controls({ 
   rainEnabled,
   setRainEnabled,
@@ -21,6 +23,7 @@ function Controls({
       <h2>⚙️ Contrôles</h2>
       
       <div className="control-group">
+      {/* Bouton pour activer/désactiver la pluie */}
         <button 
           className={`rain-toggle-btn ${rainEnabled ? 'active' : 'inactive'}`}
           onClick={() => setRainEnabled(!rainEnabled)}
@@ -29,6 +32,7 @@ function Controls({
         </button>
       </div>
 
+      {/* Slider pour la vitesse de la pluie (visible seulement si pluie activée) */}
       {rainEnabled && (
         <div className="control-group">
           <label htmlFor="rain-speed">
@@ -47,8 +51,9 @@ function Controls({
         </div>
       )}
 
+      {/* Slider pour ajuster l'intensité de la lumière */}
       <div className="control-group">
-        <label htmlFor="light-intensity">
+     <label htmlFor="light-intensity">
           💡 Intensité lumière : {lightIntensity.toFixed(1)}
         </label>
         <input

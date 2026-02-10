@@ -4,14 +4,19 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 
+// Composant principal : affiche une tête 3D contrôlable au clavier
 function MainHead() {
+  // Référence au groupe 3D (tête + lumière)
   const groupRef = useRef<THREE.Group>(null)
+  // Stocke les rotations contrôlées par le clavier
   const manualRotation = useRef({ x: 0, y: 0, z: 0 })
 
-  
+  // Charge le modèle 3D
   const { scene } = useGLTF('/models/model.glb')
   
 
+
+  // Gère les touches clavier pour contrôler la rotation (flèches + Q/E)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const speed = 0.05
@@ -42,7 +47,7 @@ function MainHead() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  
+  // Boucle d'animation : applique les rotations, ajoute inertie et respiration
   useFrame((state) => {
     if (groupRef.current) {
       groupRef.current.rotation.x += manualRotation.current.x

@@ -8,6 +8,7 @@ interface HeadRainProps {
 }
 
 function HeadRain({ rainSpeed }: HeadRainProps) {
+  // InstancedMesh : optimisation GPU pour afficher 50 modèles en une seule opération
   const instancedMeshRef = useRef<THREE.InstancedMesh>(null)
   const count = 50
 
@@ -27,8 +28,7 @@ function HeadRain({ rainSpeed }: HeadRainProps) {
     return found
   }, [gltf.scene])
 
-  const geometry = modelMesh?.geometry ?? null
-
+  const geometry = modelMesh?.geometry ?? null 
   const material = useMemo<THREE.Material | null>(() => {
     if (!modelMesh) return null
     if (Array.isArray(modelMesh.material)) {
@@ -37,6 +37,7 @@ function HeadRain({ rainSpeed }: HeadRainProps) {
     return modelMesh.material
   }, [modelMesh])
 
+  // Créer les particules avec positions et rotations aléatoires
   const particles = useMemo(() => {
     return Array.from({ length: count }, () => ({
       x: (Math.random() - 0.5) * 20,
@@ -51,6 +52,7 @@ function HeadRain({ rainSpeed }: HeadRainProps) {
     }))
   }, [count])
 
+  // Animer les particules à chaque frame : elles tombent et tournent
   useFrame((_, delta) => {
     if (!instancedMeshRef.current || !geometry) return
 
@@ -92,5 +94,4 @@ function HeadRain({ rainSpeed }: HeadRainProps) {
 }
 
 useGLTF.preload('/models/model.glb')
-
 export default HeadRain
