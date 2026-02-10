@@ -105,6 +105,4 @@ Ce projet est parfait pour apprendre :
 - Interaction utilisateur en 3D
 - Systèmes de particules
 
----
 
-**Créé par** : Étudiant en développement 3D web 🚀
